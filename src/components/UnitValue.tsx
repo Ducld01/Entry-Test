@@ -193,28 +193,44 @@ const UnitValue = () => {
             onBlur={handleInputBlur}
             className="w-full h-9 pl-9 pr-9 bg-[#212121] text-[#F9F9F9] text-xs text-center rounded-[3px] focus:outline-none focus:ring-2 focus:ring-[#3C67FF] hover:bg-[#3B3B3B] transition-colors"
           />
-          <button
-            onClick={handleDecrement}
-            disabled={isDecrementDisabled}
-            className={`absolute left-0 top-0 w-9 h-9 flex items-center justify-center text-[#F9F9F9] font-medium transition-colors rounded-l-[3px] ${
-              isDecrementDisabled
-                ? "text-[rgba(170,170,170,0.67)] cursor-not-allowed"
-                : "hover:bg-[#3B3B3B] cursor-pointer"
-            }`}
-          >
-            -
-          </button>
-          <button
-            onClick={handleIncrement}
-            disabled={isIncrementDisabled}
-            className={`absolute right-0 top-0 w-9 h-9 flex items-center justify-center text-[#F9F9F9] font-medium transition-colors rounded-r-[3px] ${
-              isIncrementDisabled
-                ? "text-[rgba(170,170,170,0.67)] cursor-not-allowed"
-                : "hover:bg-[#3B3B3B] cursor-pointer"
-            }`}
-          >
-            +
-          </button>
+          <div className="absolute left-0 top-0 group/btn">
+            <button
+              onClick={handleDecrement}
+              disabled={isDecrementDisabled}
+              className={`w-9 h-9 flex items-center justify-center text-[#F9F9F9] font-medium transition-colors rounded-l-[3px] ${
+                isDecrementDisabled
+                  ? "text-[rgba(170,170,170,0.67)] cursor-not-allowed"
+                  : "hover:bg-[#3B3B3B] cursor-pointer"
+              }`}
+            >
+              -
+            </button>
+            {isDecrementDisabled && (
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 py-1 px-2 bg-[#424242] text-[#F9F9F9] text-xs whitespace-nowrap rounded-[8px] opacity-0 group-hover/btn:opacity-100 pointer-events-none transition-opacity z-10">
+                Value must greater than 0
+                <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[#424242]"></div>
+              </div>
+            )}
+          </div>
+          <div className="absolute right-0 top-0 group/btn">
+            <button
+              onClick={handleIncrement}
+              disabled={isIncrementDisabled}
+              className={`w-9 h-9 flex items-center justify-center text-[#F9F9F9] font-medium transition-colors rounded-r-[3px] ${
+                isIncrementDisabled
+                  ? "text-[rgba(170,170,170,0.67)] cursor-not-allowed"
+                  : "hover:bg-[#3B3B3B] cursor-pointer"
+              }`}
+            >
+              +
+            </button>
+            {isIncrementDisabled && (
+              <div className="absolute bottom-full right-0 mb-2 py-1 px-2 bg-[#424242] text-[#F9F9F9] text-xs whitespace-nowrap rounded-[8px] opacity-0 group-hover/btn:opacity-100 pointer-events-none transition-opacity z-10">
+                Value must smaller than 100
+                <div className="absolute top-full right-4 -translate-x-1/2 border-4 border-transparent border-t-[#424242]"></div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
