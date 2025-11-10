@@ -6,7 +6,7 @@
   "homepage": "https://github.com/Ducld01/Entry-Test",
   "scripts": {
     "dev": "vite",
-    "build": "react-scripts build && tsc -b && vite build",
+    "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest"
